@@ -1,39 +1,21 @@
 <p id="notice"><%= notice %></p>
-<img src="<%= image_path('docker-container.png') %>" height="128" width="128"  />
-<p>
-  <strong>Container:</strong>
-  <%= @container.container_id %>
-</p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @container.image %>
-</p>
+<div class="row">
+  <div class="col-sm-3">
+    <img src="<%= image_path('docker-container.png') %>" height="200" width="200"  />
+    <p><%= link_to 'Restart', edit_container_path(@container), class:"btn btn-success btn-sm" %>
+    <%= link_to 'Stop', @container, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %>
+    <%= link_to 'Back', containers_path, class:"btn btn-secondary btn-sm" %></p>
+    <p><strong>Container ID: </strong><%= @container.container_id %></p>
+    <p><strong>Name:</strong><%= @container.names %></p>
+    <p><strong>Image:</strong><%= @container.image %></p>
+    <p><strong>Command:</strong><%= @container.command %></p>
+    <p><strong>Create:</strong><%= @container.created %></p>
+    <p><strong>Status:</strong><%= @container.status %></p>
+    <p><strong>Ports:</strong><%= @container.ports %></p>
+  </div>
+  <div class="col-sm-9">
+    
+  </div>
+</div>
 
-<p>
-  <strong>Command:</strong>
-  <%= @container.command %>
-</p>
-
-<p>
-  <strong>Create:</strong>
-  <%= @container.created %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @container.status %>
-</p>
-
-<p>
-  <strong>Ports:</strong>
-  <%= @container.ports %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @container.names %>
-</p>
-
-<%= link_to 'Restart', edit_container_path(@container) %> |
-<%= link_to 'Back', containers_path %>

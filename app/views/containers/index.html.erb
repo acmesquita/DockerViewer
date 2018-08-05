@@ -1,8 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Containers</h1>
+<%= link_to 'New Container', new_container_path %>
 
-<table>
+<div class="row">
+<% @containers.each do |container| %>
+
+  <div class="col-sm ">
+    <div>
+      <img src="<%= image_path('docker-container.png') %>" height="128" width="128"  />
+      <p> <strong><%= link_to container.names, container%></strong> - <%= container.container_id %></p>
+      <!-- <p><%= container.image %></p> -->
+      <!-- <p><%= container.created %></p> -->
+      <p><%= container.status %></p>
+      <!-- <p><%= container.ports %></p> -->
+      <p>
+      <%= link_to 'Restart', edit_container_path(container), class:"btn btn-success btn-sm" %>
+      <%= link_to 'Stop', container, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %></p>
+
+      <p></p>
+    </div>
+  </div>
+  
+  <% end %>
+</div>
+  
+<!-- <table>
   <thead>
     <tr>
       <th>Container</th>
@@ -26,7 +49,7 @@
         <td><%= container.status %></td>
         <td><%= container.ports %></td>
         <td><%= container.names %></td>
-        <td><%= link_to 'Show Logs', container %></td>
+        <td><%= link_to 'Show Logs', container, class:"btn" %></td>
         <td><%= link_to 'Restart', edit_container_path(container) %></td>
         <td><%= link_to 'Stop', container, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -34,6 +57,5 @@
   </tbody>
 </table>
 
-<br>
+<br> -->
 
-<%= link_to 'New Container', new_container_path %>
