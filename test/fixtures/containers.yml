@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  container_id: MyString
+  image: MyString
+  command: MyString
+  create: MyString
+  status: MyString
+  ports: MyString
+  name: MyString
+
+two:
+  container_id: MyString
+  image: MyString
+  command: MyString
+  create: MyString
+  status: MyString
+  ports: MyString
+  name: MyString
