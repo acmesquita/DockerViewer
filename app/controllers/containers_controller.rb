@@ -11,15 +11,18 @@ class ContainersController < ApplicationController
   # GET /containers/1
   # GET /containers/1.json
   def show
+    # TODO Exibir o log do container
   end
 
   # GET /containers/new
   def new
-    @container = Container.new
+    # @container = Container.new
+    # TODO Criar um container a partir de uma imagem 
   end
 
   # GET /containers/1/edit
   def edit
+    # Restarta o container
   end
 
   # POST /containers
@@ -41,25 +44,48 @@ class ContainersController < ApplicationController
   # PATCH/PUT /containers/1
   # PATCH/PUT /containers/1.json
   def update
-    respond_to do |format|
-      if @container.update(container_params)
-        format.html { redirect_to @container, notice: 'Container was successfully updated.' }
+    # Restarta o container
+    # respond_to do |format|
+    #   if @container.update(container_params)
+    #     format.html { redirect_to @container, notice: 'Container was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @container }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @container.errors, status: :unprocessable_entity }
+    #   end
+    # end
+
+    container_id = container_params["container_id"]
+    @container = set_container()
+    if %x(docker restart #{container_id})
+      respond_to do |format|
+        format.html { redirect_to containers_url, notice: 'Container was successfully restarted.' }
         format.json { render :show, status: :ok, location: @container }
-      else
-        format.html { render :edit }
+      end
+    else
+      respond_to do |format|
+        format.html { render :index }
         format.json { render json: @container.errors, status: :unprocessable_entity }
       end
-    end
+    end    
   end
 
   # DELETE /containers/1
   # DELETE /containers/1.json
   def destroy
-    @container.destroy
-    respond_to do |format|
-      format.html { redirect_to containers_url, notice: 'Container was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+
+    container_id = @container.container_id
+    if %x(docker stop #{container_id})
+      respond_to do |format|
+        format.html { redirect_to containers_url, notice: 'Container was successfully stoped.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @container.errors, status: :unprocessable_entity }
+      end
+    end  
   end
 
   private

@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<img src="<%= image_path('docker-container.png') %>" height="128" width="128"  />
 <p>
   <strong>Container:</strong>
   <%= @container.container_id %>
@@ -35,5 +35,5 @@
   <%= @container.names %>
 </p>
 
-<%= link_to 'Edit', edit_container_path(@container) %> |
+<%= link_to 'Restart', edit_container_path(@container) %> |
 <%= link_to 'Back', containers_path %>
