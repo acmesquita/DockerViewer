@@ -17,12 +17,18 @@ body{
 	margin: 0;
 	padding: 0;
 	background: #fff;
-
 	color: #fff;
 	font-family: Arial;
 	font-size: 12px;
 }
-
+.card{
+	width: 16rem;
+    border-color: midnightblue !important; 
+	background-image: url(docker.png);
+	// background-size: 1000px 1000px;
+	background-repeat: no-repeat;
+	// background-position: right top, left top;
+}
 .body{
 	position: absolute;
 	top: -20px;

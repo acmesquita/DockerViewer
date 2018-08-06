@@ -27,8 +27,7 @@
 <% @containers.each do |container| %>
 
   <div class="col-sm-3">
-    <div class="card" style="width: 16rem; border-color: midnightblue; background-color: #b6e9f1">
-      <!-- <img class="card-img-top" src="<%= image_path('docker-container.png') %>"  alt="image docker" style="margin: 0px"> -->
+    <div class="card">
       <div class="card-body">
         <h5 class="card-title"><%= link_to container.names, container%></h5>
         <p class="card-text">
