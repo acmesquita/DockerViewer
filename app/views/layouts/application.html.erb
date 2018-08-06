@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DockerManager</title>
+    <title>DockerViewer</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,8 +10,12 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= yield %>
+    <%= render 'navbar' %>
+    <div style="overflow-y: scroll;">
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
+    <%= render 'footer' %>
   </body>
 </html>

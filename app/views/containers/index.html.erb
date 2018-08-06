@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Containers</h1>
-<%= link_to 'New Container', new_container_path %>
+<!-- <%= link_to 'New Container', new_container_path %> -->
 
 <div class="row">
 <% @containers.each do |container| %>
 
-  <div class="col-sm ">
+  <div class="col-sm-4">
     <div>
       <img src="<%= image_path('docker-container.png') %>" height="128" width="128"  />
       <p> <strong><%= link_to container.names, container%></strong> - <%= container.container_id %></p>
