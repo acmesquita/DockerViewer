@@ -6,19 +6,19 @@
 <div class="row">
 <% @containers.each do |container| %>
 
-  <div class="col-sm-4">
-    <div>
-      <img src="<%= image_path('docker-container.png') %>" height="128" width="128"  />
-      <p> <strong><%= link_to container.names, container%></strong> - <%= container.container_id %></p>
-      <!-- <p><%= container.image %></p> -->
-      <!-- <p><%= container.created %></p> -->
-      <p><%= container.status %></p>
-      <!-- <p><%= container.ports %></p> -->
-      <p>
-      <%= link_to 'Restart', edit_container_path(container), class:"btn btn-success btn-sm" %>
-      <%= link_to 'Stop', container, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %></p>
-
-      <p></p>
+  <div class="col-sm-3">
+    <div class="card" style="width: 16rem; border-color: midnightblue; background-color: #b6e9f1">
+      <!-- <img class="card-img-top" src="<%= image_path('docker-container.png') %>"  alt="image docker" style="margin: 0px"> -->
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to container.names, container%></h5>
+        <p class="card-text">
+          <p>ID: <%= container.container_id %></p>
+          <p>Status: <%= container.status %></p>
+        </p>
+        <p>
+          <%= link_to 'Restart', edit_container_path(container), class:"btn btn-success btn-sm" %>
+          <%= link_to 'Stop', container, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %></p>
+      </div>
     </div>
   </div>
   
