@@ -1,34 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <img src="<%= image_path('logo.png') %>" height="50" width="50" style="padding: 5px" />
   <%= link_to  "DockerViewer", containers_path, class:"navbar-brand" %>
-    <!-- <a class="navbar-brand" href="#">DockerViewer</a> -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+        <% if user_signed_in? %>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item active">
           <%= link_to  "Containers", containers_path, class:"nav-link" %>
-            <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
         </li>
         <li class="nav-item">
           <%= link_to  "Images", containers_path, class:"nav-link disabled" %>
-            <!-- <a class="nav-link disabled"  href="#">Images</a> -->
         </li>
-        <!-- <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown link
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li> -->
+          <li class="float-right nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.email%>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to  "Quit", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+            </div>
+          </li>
       </ul>
     </div>
+        <% end %>
 </nav>
