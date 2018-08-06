@@ -1,4 +1,19 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong><p id="notice"><%= notice %></p></strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong><p id="notice"><%= notice %></p></strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
 
 <h1>Containers</h1>
 <!-- <%= link_to 'New Container', new_container_path %> -->
