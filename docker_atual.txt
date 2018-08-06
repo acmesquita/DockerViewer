@@ -1,3 +1,0 @@
-CONTAINER ID        IMAGE                        COMMAND             CREATED             STATUS              PORTS                    NAMES
-63f0c332ce87        douglasq/alura-books:cap05   "npm start"         9 minutes ago       Up 8 minutes        0.0.0.0:8082->3000/tcp   docker_aula
-434c648a614d        douglasq/alura-books:cap05   "npm start"         34 minutes ago      Up 8 minutes        0.0.0.0:8080->3000/tcp   zen_wilson

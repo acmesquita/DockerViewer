@@ -28,3 +28,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+docker_atual.txt
+
+docker_logs*
