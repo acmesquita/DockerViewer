@@ -4,6 +4,11 @@
 <!-- <%= link_to 'New Container', new_container_path %> -->
 
 <div class="row">
+
+<% if @containers.blank? %>
+  <p>Não há containers nesse servidor.</p>
+<% end %>
+
 <% @containers.each do |container| %>
 
   <div class="col-sm-3">
@@ -16,7 +21,7 @@
           <p>Status: <%= container.status %></p>
         </p>
         <p>
-          <%= link_to 'Restart', edit_container_path(container), class:"btn btn-success btn-sm" %>
+          <%= link_to 'Restart', restart_path(container), class:"btn btn-success btn-sm" %>
           <%= link_to 'Stop', container, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %></p>
       </div>
     </div>

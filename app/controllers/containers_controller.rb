@@ -12,6 +12,16 @@ class ContainersController < ApplicationController
   # GET /containers/1.json
   def show
     # TODO Exibir o log do container
+    file_name = "docker_logs_#{Time.now.day.to_s}_#{Time.now.month.to_s}_#{Time.now.year.to_s}_#{@container.container_id}.txt"
+    %x(docker logs --tail 100 #{@container.container_id} > #{file_name})
+
+    states_file = File.open(file_name)
+    @linhas = []
+
+    while ! states_file.eof?
+      line = states_file.gets.chomp
+      @linhas << line
+    end
   end
 
   # GET /containers/new
@@ -22,23 +32,39 @@ class ContainersController < ApplicationController
 
   # GET /containers/1/edit
   def edit
+  end
+  
+  def restart
     # Restarta o container
+    @container = set_container()
+    container_id = @container.container_id
+    if %x(docker restart #{container_id})
+      respond_to do |format|
+        format.html { redirect_to @container, notice: 'Container was successfully restarted.' }
+        format.json { render :show, status: :ok, location: @container }
+      end
+    else
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @container.errors, status: :unprocessable_entity }
+      end
+    end   
   end
 
   # POST /containers
   # POST /containers.json
   def create
-    @container = Container.new(container_params)
+    # @container = Container.new(container_params)
 
-    respond_to do |format|
-      if @container.save
-        format.html { redirect_to @container, notice: 'Container was successfully created.' }
-        format.json { render :show, status: :created, location: @container }
-      else
-        format.html { render :new }
-        format.json { render json: @container.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @container.save
+    #     format.html { redirect_to @container, notice: 'Container was successfully created.' }
+    #     format.json { render :show, status: :created, location: @container }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @container.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /containers/1
@@ -54,20 +80,6 @@ class ContainersController < ApplicationController
     #     format.json { render json: @container.errors, status: :unprocessable_entity }
     #   end
     # end
-
-    container_id = container_params["container_id"]
-    @container = set_container()
-    if %x(docker restart #{container_id})
-      respond_to do |format|
-        format.html { redirect_to containers_url, notice: 'Container was successfully restarted.' }
-        format.json { render :show, status: :ok, location: @container }
-      end
-    else
-      respond_to do |format|
-        format.html { render :index }
-        format.json { render json: @container.errors, status: :unprocessable_entity }
-      end
-    end    
   end
 
   # DELETE /containers/1
