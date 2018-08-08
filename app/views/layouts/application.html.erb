@@ -7,18 +7,22 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
   </head>
 
   <body>
-    <% if user_signed_in? %>
-    <%= render "/containers/navbar" %>
-    <br/>
-    <% end %>
     <!-- <div style="overflow-y: scroll;"> -->
-      <div class="container">
-        <%= yield %>
-      </div>
+    <% if user_signed_in? %>
+      <%= render "/containers/navbar" %>
+      <br/>
+    <% end %>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <% if user_signed_in? %>
+      <%= render '/containers/footer' %>
+    <% end %>
     <!-- </div> -->
-    <%= render '/containers/footer' %>
   </body>
 </html>
