@@ -54,32 +54,13 @@ class ContainersController < ApplicationController
   # POST /containers
   # POST /containers.json
   def create
-    # @container = Container.new(container_params)
 
-    # respond_to do |format|
-    #   if @container.save
-    #     format.html { redirect_to @container, notice: 'Container was successfully created.' }
-    #     format.json { render :show, status: :created, location: @container }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @container.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /containers/1
   # PATCH/PUT /containers/1.json
   def update
-    # Restarta o container
-    # respond_to do |format|
-    #   if @container.update(container_params)
-    #     format.html { redirect_to @container, notice: 'Container was successfully updated.' }
-    #     format.json { render :show, status: :ok, location: @container }
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @container.errors, status: :unprocessable_entity }
-    #   end
-    # end
+   
   end
 
   # DELETE /containers/1
@@ -114,7 +95,6 @@ class ContainersController < ApplicationController
         linhas << line.split('  ').delete_if {|l| l == ""}
       end
       objs = []
-      # puts linhas.to_s
       cabecalho = linhas[0].map!{ |l| l.downcase  }.map! { |l| l.strip }.map! { |l| l.sub(" ", "_")  }
       linhas.delete(cabecalho)
       linhas.each do |item|
