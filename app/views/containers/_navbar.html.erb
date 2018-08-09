@@ -14,14 +14,14 @@
         <li class="nav-item">
           <%= link_to  "Images", containers_path, class:"nav-link disabled" %>
         </li>
-          <li class="float-right nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= current_user.email%>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <%= link_to  "Quit", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
-            </div>
-          </li>
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.name%>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to  "Quit", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+          </div>
+        </li>
       </ul>
     </div>
         <% end %>

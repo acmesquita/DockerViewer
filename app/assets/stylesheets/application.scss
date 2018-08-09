@@ -91,7 +91,7 @@ body{
 .login input[type=email]{
 	width: 250px;
 	height: 30px;
-	background: transparent;
+	background: #0000004d;;
 	border: 1px solid rgba(255,255,255,0.6);
 	border-radius: 2px;
 	color: #fff;
@@ -101,10 +101,39 @@ body{
 	padding: 4px;
 }
 
+.login input[type=text]{
+	width: 250px;
+	height: 30px;
+	background: #0000004d;;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-bottom: 5px;
+}
+
+.login select, option{
+	width: 250px;
+	height: 30px;
+	background: #0000004d;;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-bottom: 5px;
+}
+
+
 .login input[type=password]{
 	width: 250px;
 	height: 30px;
-	background: transparent;
+	background: #0000004d;;
 	border: 1px solid rgba(255,255,255,0.6);
 	border-radius: 2px;
 	color: #fff;
