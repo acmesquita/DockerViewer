@@ -15,14 +15,13 @@
   </div>
 <% end %>
 
-<h3>Servers <%= link_to 'New Server', new_server_path, class:"btn btn-default"%></h3>
+<h3>Servers  <% if policy(Server).create_server? %> <%= link_to 'New Server', new_server_path, class:"btn btn-default"%> <% end %></h3>
 
 <% if @servers.blank? %>
   <p>No server.</p>
 <% end %>
 
 <table class="table table-bordered">
-  
   <tbody>
     <% @servers.each do |server| %>
       <tr>
@@ -30,8 +29,10 @@
         <td><%= server.ip %></td>
         <td><%= server.port %></td>
         <td><%= server.login %></td>
-        <td><%= link_to 'Edit', edit_server_path(server), class:"btn btn-warning btn-sm" %></td>
-        <td><%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %></td>
+        <% if policy(Server).show_buttons? %>
+          <td><%= link_to 'Edit', edit_server_path(server), class:"btn btn-warning btn-sm" %>
+          <%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

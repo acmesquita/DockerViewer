@@ -35,8 +35,12 @@
           <p>Status: <%= container.status %></p>
         </p>
         <p>
-          <%= link_to 'Restart', restart_path(container), class:"btn btn-success btn-sm" %>
-          <%= link_to 'Stop', server_container_path(container.server.id, container.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %></p>
+          <% if policy(Container).show_button_restart? %>
+            <%= link_to 'Restart', restart_path(container), class:"btn btn-success btn-sm" %>
+          <% end %>
+          <% if policy(Container).show_button_stop? %>
+            <%= link_to 'Stop', server_container_path(container.server.id, container.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %></p>
+          <% end %>
       </div>
     </div>
   </div>
