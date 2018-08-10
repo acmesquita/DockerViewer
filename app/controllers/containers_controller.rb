@@ -12,9 +12,8 @@ class ContainersController < ApplicationController
   # GET /containers/1.json
   def show
     # TODO Exibir o log do container
-    acesso = "ssh #{@container.server.login}@#{@container.server.ip}"
-    file_name = "docker_logs_#{Time.now.day.to_s}_#{Time.now.month.to_s}_#{Time.now.year.to_s}_#{@container.container_id}.txt"
-    %x(#{acesso} docker logs --tail 100 #{@container.container_id} > #{file_name})
+   file_name = "docker_logs_#{Time.now.day.to_s}_#{Time.now.month.to_s}_#{Time.now.year.to_s}_#{@container.container_id}.txt"
+    %x(#{access_server(@container.server)} docker logs --tail 100 #{@container.container_id} > #{file_name})
 
     states_file = File.open(file_name)
     @linhas = []
@@ -40,7 +39,7 @@ class ContainersController < ApplicationController
     @container = set_container()
     container_id = @container.container_id
     acesso = "ssh #{@container.server.login}@#{@container.server.ip}"
-    if %x(#{acesso} docker restart #{container_id})
+    if %x(#{access_server(@container.server)} docker restart #{container_id})
       respond_to do |format|
         format.html { redirect_to server_container_path(@container.server.id, @container.id), notice: 'Container was successfully restarted.' }
         format.json { render :show, status: :ok, location: @container }
@@ -70,7 +69,7 @@ class ContainersController < ApplicationController
   def destroy
     acesso = "ssh #{@container.server.login}@#{@container.server.ip}"
     container_id = @container.container_id
-    if %x(#{acesso} docker stop #{container_id})
+    if %x(#{access_server(@container.server)} docker stop #{container_id})
       respond_to do |format|
         format.html { redirect_to server_container_path(container.server.id, container.id), notice: 'Container was successfully stoped.' }
         format.json { head :no_content }
@@ -88,8 +87,7 @@ class ContainersController < ApplicationController
     def start_containers
       @server = Server.find(params[:server_id])
       @server.containers.delete_all   
-      acesso = "ssh #{@server.login}@#{@server.ip}"
-      %x(#{acesso} docker ps > docker_atual.txt)
+      %x(#{access_server(@server)} docker ps > docker_atual.txt)
 
       states_file = File.open("docker_atual.txt")
       linhas = []
@@ -114,5 +112,10 @@ class ContainersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def container_params
       params.require(:container).permit(:container_id, :image, :command, :create, :status, :ports, :name)
+    end
+
+    def access_server(server)
+      port = server.port.blank? ? "" : " -p #{server.port}"
+      acesso = "ssh #{port} #{server.login}@#{server.ip}"  
     end
 end

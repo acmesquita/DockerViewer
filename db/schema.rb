@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_10_135045) do
+ActiveRecord::Schema.define(version: 2018_08_10_150913) do
 
   create_table "containers", force: :cascade do |t|
     t.string "container_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_135045) do
     t.string "login"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "port"
   end
 
   create_table "users", force: :cascade do |t|
