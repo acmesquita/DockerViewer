@@ -1,28 +1,37 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong><p id="notice"><%= notice %></p></strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong><p id="notice"><%= alert %></p></strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
 
-<h1>Servers</h1>
+<h3>Servers <%= link_to 'New Server', new_server_path, class:"btn btn-default"%></h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Ip</th>
-      <th>Chave ssh</th>
-      <th>Login</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% if @servers.blank? %>
+  <p>No server.</p>
+<% end %>
 
+<table class="table table-bordered">
+  
   <tbody>
     <% @servers.each do |server| %>
       <tr>
-        <td><%= server.name %></td>
+        <td><%= link_to server.name, server_containers_path(server) %></td>
         <td><%= server.ip %></td>
-        <td><%= server.chave_ssh %></td>
+        <td><%= server.port %></td>
         <td><%= server.login %></td>
-        <td><%= link_to 'Show', server_containers_path(server) %></td>
-        <td><%= link_to 'Edit', edit_server_path(server) %></td>
-        <td><%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_server_path(server), class:"btn btn-warning btn-sm" %></td>
+        <td><%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +39,3 @@
 
 <br>
 
-<%= link_to 'New Server', new_server_path %>

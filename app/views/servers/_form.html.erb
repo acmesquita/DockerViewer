@@ -10,33 +10,77 @@
       </ul>
     </div>
   <% end %>
+  <div class="form-group">
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label"><%= form.label :name %></label>
+      <div class="col-sm-5">
+        <%= form.text_field :name , class:"form-control" %>
+        
+      </div>
+      <div class="col-sm-5">
+        <small id="emailHelp" class="form-text text-muted">
+          Name to indentify your server.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label"><%= form.label :ip %></label>
+      <div class="col-sm-5">
+        <%= form.text_field :ip , class:"form-control" %>
+      </div>
+      <div class="col-sm-4">
+        <small id="emailHelp" class="form-text text-muted">
+         IP to access
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label"><%= form.label :port %></label>
+      <div class="col-sm-5">
+        <%= form.text_field :port , class:"form-control" %>
+      </div>
+      <div class="col-sm-4">
+        <small id="emailHelp" class="form-text text-muted">
+         If this serve use other port, if not use default port.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label"><%= form.label :login %></label>
+      <div class="col-sm-5">
+        <%= form.text_field :login , class:"form-control" %>
+      </div>
+      <div class="col-sm-4">
+        <small id="emailHelp" class="form-text text-muted">
+          User for access.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label"><%= form.label :chave_ssh %></label>
+      <div class="col-sm-5">
+        <%= form.text_field :chave_ssh , class:"form-control-plaintext" %>
+        
+      </div>
+      <div class="col-sm-4">
+        <small id="emailHelp" class="form-text text-muted">
+          This is the public-key to use in your serve for connection.
+        </small>
+      </div>
+    </div>
+
+
+    <!-- <div class="field">
+      <input type="text" readonly class="form-control-plaintext" id="" value="email@example.com">
+    </div> -->
   </div>
-
-  <div class="field">
-    <%= form.label :ip %>
-    <%= form.text_field :ip %>
-  </div>
-
-  <div class="field">
-    <%= form.label :port %>
-    <%= form.text_field :port %>
-  </div>
-
-  <div class="field">
-    <%= form.label :chave_ssh %>
-    <%= form.text_field :chave_ssh %>
-  </div>
-
-  <div class="field">
-    <%= form.label :login %>
-    <%= form.text_field :login %>
-  </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-primary" %>
+    <%= link_to 'Back', servers_path, class:"btn btn-secondary btn-sm" %>
   </div>
 <% end %>
