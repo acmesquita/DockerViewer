@@ -5,15 +5,16 @@ class ContainersController < ApplicationController
   # GET /containers.json
   def index
     start_containers()
-    @containers = Container.all
+    @containers = @server.containers
   end
 
   # GET /containers/1
   # GET /containers/1.json
   def show
     # TODO Exibir o log do container
+    acesso = "ssh #{@container.server.login}@#{@container.server.ip}"
     file_name = "docker_logs_#{Time.now.day.to_s}_#{Time.now.month.to_s}_#{Time.now.year.to_s}_#{@container.container_id}.txt"
-    %x(docker logs --tail 100 #{@container.container_id} > #{file_name})
+    %x(#{acesso} docker logs --tail 100 #{@container.container_id} > #{file_name})
 
     states_file = File.open(file_name)
     @linhas = []
@@ -38,9 +39,10 @@ class ContainersController < ApplicationController
     # Restarta o container
     @container = set_container()
     container_id = @container.container_id
-    if %x(docker restart #{container_id})
+    acesso = "ssh #{@container.server.login}@#{@container.server.ip}"
+    if %x(#{acesso} docker restart #{container_id})
       respond_to do |format|
-        format.html { redirect_to @container, notice: 'Container was successfully restarted.' }
+        format.html { redirect_to server_container_path(@container.server.id, @container.id), notice: 'Container was successfully restarted.' }
         format.json { render :show, status: :ok, location: @container }
       end
     else
@@ -66,11 +68,11 @@ class ContainersController < ApplicationController
   # DELETE /containers/1
   # DELETE /containers/1.json
   def destroy
-
+    acesso = "ssh #{@container.server.login}@#{@container.server.ip}"
     container_id = @container.container_id
-    if %x(docker stop #{container_id})
+    if %x(#{acesso} docker stop #{container_id})
       respond_to do |format|
-        format.html { redirect_to containers_url, notice: 'Container was successfully stoped.' }
+        format.html { redirect_to server_container_path(container.server.id, container.id), notice: 'Container was successfully stoped.' }
         format.json { head :no_content }
       end
     else
@@ -84,8 +86,10 @@ class ContainersController < ApplicationController
   private
     # Atualizar os container
     def start_containers
-      Container.delete_all
-      %x(docker ps > docker_atual.txt)
+      @server = Server.find(params[:server_id])
+      @server.containers.delete_all   
+      acesso = "ssh #{@server.login}@#{@server.ip}"
+      %x(#{acesso} docker ps > docker_atual.txt)
 
       states_file = File.open("docker_atual.txt")
       linhas = []
@@ -98,7 +102,7 @@ class ContainersController < ApplicationController
       cabecalho = linhas[0].map!{ |l| l.downcase  }.map! { |l| l.strip }.map! { |l| l.sub(" ", "_")  }
       linhas.delete(cabecalho)
       linhas.each do |item|
-        Container.create(cabecalho.zip(item).to_h)
+        @server.containers << Container.create(cabecalho.zip(item).to_h)
       end
     end 
 

@@ -29,9 +29,9 @@
   <div class="col-sm-9">
     <div class="row float-right">
       <p>
-        <%= link_to 'Update', container_path(@container), class:"btn btn-info" %>
+        <%= link_to 'Update', server_container_path(@container.server, @container), class:"btn btn-info" %>
         <%= link_to 'Restart', restart_path(@container),  data: { confirm: 'Are you sure?' }, class:"btn btn-success " %>
-        <%= link_to 'Stop', @container, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger " %>
+        <%= link_to 'Stop',server_container_path(@container.server, @container), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger " %>
       </p>
     </div>
     <h3>Logs</h3>
