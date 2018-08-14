@@ -1,0 +1,20 @@
+<h3>Users <%=link_to "New User", new_user_registration_path, class:"btn btn-primary btn-sm float-right"%></h3>
+
+<table class="table table-bordered">
+  <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+        <td><%= link_to 'Edit', edit_user_path(user), class:"btn btn-warning btn-sm" %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
