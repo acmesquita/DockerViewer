@@ -15,7 +15,14 @@
   </div>
 <% end %>
 
-<h3>Servers  <% if policy(Server).create_server? %> <%= link_to 'New Server', new_server_path, class:"btn btn-default"%> <% end %></h3>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2">Servers</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <%= link_to 'New Server', new_server_path, class:"btn btn-primary"%>
+    </div>
+  </div>
+</div>
 
 <% if @servers.blank? %>
   <p>No server.</p>

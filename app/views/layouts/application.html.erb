@@ -14,12 +14,20 @@
   <body>
     <!-- <div style="overflow-y: scroll;"> -->
     <% if user_signed_in? %>
-      <%= render "/containers/navbar" %>
+      <%= render "/layouts/navbar2" %>
       <br/>
-    <% end %>
-    <div class="container">
-      <%= yield %>
+    <div class="container-fluid">
+      <div class="row">
+        <%= render "/layouts/sidebar" %>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+           <%= yield %>
+          </div>
+        </main>
+      </div>
     </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
     <% if user_signed_in? %>
       <%= render '/containers/footer' %>
     <% end %>

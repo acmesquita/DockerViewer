@@ -1,3 +1,49 @@
 <h3>Editing User</h3>
 
-<%= render 'form', user: @user %>
+<%= form_with(model: @user, local:true) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+
+     <div class="form-group row">
+      <%= f.label :name , class:"col-sm-2 col-form-label"%>
+      <div class="col-sm-5">
+        <%= f.text_field :name, class:"form-control"%>
+      </div>
+      <div class="col-sm-5">
+    </div>
+  </div>
+
+  <div class="form-group row">
+      <%= f.label :email , class:"col-sm-2 col-form-label"%>
+      <div class="col-sm-5">
+        <%= f.email_field :email, class:"form-control" %>
+      </div>
+      <div class="col-sm-5">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :role , class:"col-sm-2 col-form-label"%>
+    <div class="col-sm-5">
+      <%= f.select :role, User.roles.keys, {}, class:"form-control" %>
+    </div>
+    <div class="col-sm-5">
+    </div>
+  </div>
+  
+  </div>
+  <div class="actions">
+    <%= f.submit class:"btn btn-primary" %>
+    <%= link_to 'Back', servers_path, class:"btn btn-secondary btn-sm" %>
+  </div>
+<% end %>
