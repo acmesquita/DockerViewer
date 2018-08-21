@@ -1,6 +1,7 @@
 class ContainersController < ApplicationController
+  before_action :init_size_log, only: [:show]
   before_action  :set_container, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /containers
   # GET /containers.json
   def index
@@ -13,7 +14,7 @@ class ContainersController < ApplicationController
   def show
     # TODO Exibir o log do container
    file_name = "docker_logs_#{Time.now.day.to_s}_#{Time.now.month.to_s}_#{Time.now.year.to_s}_#{@container.container_id}.txt"
-    %x(#{access_server(@container.server)} docker logs --tail 100 #{@container.container_id} > #{file_name})
+    %x(#{access_server(@container.server)} docker logs --tail #{@size_log} #{@container.container_id} > #{file_name})
 
     states_file = File.open(file_name)
     @linhas = []
@@ -117,5 +118,10 @@ class ContainersController < ApplicationController
     def access_server(server)
       port = server.port.blank? ? "" : " -p #{server.port}"
       acesso = "ssh #{port} #{server.login}@#{server.ip}"  
+    end
+
+    def init_size_log
+      include = params.include? :size_log
+      @size_log =  include ? params.require(:size_log)  : 100
     end
 end

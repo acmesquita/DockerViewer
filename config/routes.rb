@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :update] 
 
   get 'containers/restart/:id', to: 'containers#restart', as: 'restart'
+  post 'containers/:id', to: 'containers#show', as: 'size_log'
 
   root 'servers#index'
 end

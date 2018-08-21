@@ -28,15 +28,17 @@
   </div>
   <div class="col-sm-9">
     <div class="row float-right">
-      <p>
-        <%= link_to 'Update', server_container_path(@container.server, @container), class:"btn btn-info btn-sm" %>
+        <%= form_tag size_log_path do %>
+          <%= number_field_tag :size_log, @size_log, min: 1, max: 1000, class:" show_buttons input_number", required: true %>
+          <%= submit_tag 'Update', class:"btn btn-info btn-sm show_buttons" %>
+        <% end %>
+        <%#= link_to 'Update', server_container_path(@container.server, @container), class:"btn btn-info btn-sm" %>
         <% if policy(Container).show_button_restart? %>
-            <%= link_to 'Restart', restart_path(@container), class:"btn btn-success btn-sm" %>
+            <%= link_to 'Restart', restart_path(@container), class:"btn btn-success btn-sm show_buttons" %>
           <% end %>
           <% if policy(Container).show_button_stop? %>
-            <%= link_to 'Stop', server_container_path(@container.server.id, @container.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %></p>
+            <%= link_to 'Stop', server_container_path(@container.server.id, @container.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %>
           <% end %>      
-      </p>
     </div>
     <h3>Logs</h3>
     <div style="width: 100%; height: 450px; overflow-y: scroll;">

@@ -243,4 +243,11 @@ body{
   .float-right{
 	margin-right: 5px !important;
   }
+.show_buttons{
+	margin-right: 16px;
+}
+.input_number{
+	width: 85px;
+	text-align: right;
+}
 @import "bootstrap"
