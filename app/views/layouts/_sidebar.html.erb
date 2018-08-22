@@ -1,13 +1,23 @@
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+<nav class="col-md-2 d-none d-md-block sidebar sidebar_backgraund">
 	<div class="sidebar-sticky">
 		<ul class="nav flex-column">
 			<li class="nav-item">
-				<%=link_to 'Servers', servers_path, class:"nav-link"%>
+				<div class="nav-link" >
+					<a href=<%= servers_url %>>Servers
+						<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+						</a>
+					</a>
+					<ul class="collapse list-unstyled" id="homeSubmenu">
+							<li>
+								<%= link_to 'New Server', new_server_path, class:""%>
+							</li>
+					</ul>
+				</div>
 			</li>
 			<li class="nav-item">
 					<%=link_to 'Users', users_path, class:"nav-link"%>
 			</li>
-			
 		</ul>
+		<%= render '/containers/footer' %>
 	</div>
 </nav>

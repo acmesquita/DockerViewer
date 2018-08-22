@@ -15,32 +15,39 @@
   </div>
 <% end %>
 
-<h3><%= link_to @server.name, server_path(@server) %> - Containers</h3>
-<!-- <%= link_to 'New Container', new_server_container_path %> -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Servers', servers_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Containers</li>
+  </ol>
+</nav>
 
 <div class="row">
 
 <% if @containers.blank? %>
-  <p>No containers.</p>
+  <h6>No containers.</h6>
 <% end %>
 
 <% @containers.each do |container| %>
 
   <div class="col-sm-3">
-    <div class="card">
+    <div class="card border-primary mb-3">
+      <div class="card-header text-center"><%= link_to container.names, server_container_path(container.server.id, container.id) %></div>
       <div class="card-body">
-        <h5 class="card-title"><%= link_to container.names, server_container_path(container.server.id, container.id) %></h5>
-        <p class="card-text">
-          <p>ID: <%= container.container_id %></p>
-          <p>Status: <%= container.status %></p>
-        </p>
-        <p>
+        <h6 class="card-text">
+          <h6>ID: <%= container.container_id %><br/>
+          <small class="text-muted"> Status: <%= container.status %> </small></h6>
+        </h6>
+      </div>
+      <div class="card-footer bg-transparent text-cente">
+        <h6>
           <% if policy(Container).show_button_restart? %>
             <%= link_to 'Restart', restart_path(container), class:"btn btn-success btn-sm" %>
           <% end %>
           <% if policy(Container).show_button_stop? %>
-            <%= link_to 'Stop', server_container_path(container.server.id, container.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %></p>
+            <%= link_to 'Stop', server_container_path(container.server.id, container.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %>
           <% end %>
+        </h6>
       </div>
     </div>
   </div>

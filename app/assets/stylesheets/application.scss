@@ -21,13 +21,17 @@ body{
 	font-family: Arial;
 	font-size: 12px;
 }
+p{
+	word-wrap: break-word;
+}
 .card{
 	// width: 10rem;
 	border-top-style: solid !important;
-	border-top-width: 5px !important;
+	border-top-width: 3px !important;
 	border-top-color: midnightblue !important; 
 	// padding: 5px;
 	margin: 10px;
+
 	// background-image: url(docker.png);
 	// background-size: 1000px 1000px;
 	// background-repeat: no-repeat;
@@ -243,6 +247,8 @@ body{
   .float-right{
 	margin-right: 5px !important;
   }
+
+
 .show_buttons{
 	margin-right: 16px;
 }
@@ -250,4 +256,37 @@ body{
 	width: 85px;
 	text-align: right;
 }
+
+.card-body{
+	padding: 0.5rem !important;
+}
+
+.sidebar_backgraund{
+	.nav-item{
+	color: white;
+	a {
+		color: white;
+		}
+		a:hover{
+			color: white;
+			text-decoration: none;
+		}
+		ul{
+			li {
+				a{
+					color: white;
+				}
+				a:hover{
+					color: white;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+	a:hover{
+		color: white;
+		text-decoration: none;
+	}
+}
+
 @import "bootstrap"

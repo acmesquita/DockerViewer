@@ -15,21 +15,19 @@
     <!-- <div style="overflow-y: scroll;"> -->
     <% if user_signed_in? %>
       <%= render "/layouts/navbar2" %>
-    <div class="container-fluid">
-      <div class="row">
-        <%= render "/layouts/sidebar" %>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div class="container">
+      <%# <div class="row"> %>
+        <%#= render "/layouts/sidebar" %>
            <%= yield %>
-          </div>
-        </main>
-      </div>
+        <%# <main role="main" class="col-md-11 ml-sm-auto col-lg-10 pt-3 px-4">
+        </main> %>
+      <%# </div> %>
     </div>
     <% else %>
       <%= yield %>
     <% end %>
-    <% if user_signed_in? %>
-      <%= render '/containers/footer' %>
-    <% end %>
+   
     <!-- </div> -->
+    
   </body>
 </html>
