@@ -11,7 +11,18 @@
 <nav class="navbar navbar sticky-top bg-dark flex-md-nowrap p-0 justify-content-center sidebar_backgraund">
   <ul class="nav ">
     <li class="nav-item">
-      <%=link_to 'Server', servers_path, class:"nav-link active" %>
+    <div class="nav-link" >
+					<a href=<%= servers_url %>>Servers
+						<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+						</a>
+					</a>
+					<ul class="collapse list-unstyled" id="homeSubmenu">
+							<li>
+								<%= link_to 'New Server', new_server_path, class:""%>
+							</li>
+					</ul>
+				</div>
+      <%#=link_to 'Server', servers_path, class:"nav-link active" %>
     </li>
     <li class="nav-item">
       <%=link_to 'Users', users_path, class:"nav-link"%>
