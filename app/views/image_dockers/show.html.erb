@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Repository:</strong>
+  <%= @image_docker.repository %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @image_docker.tag %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @image_docker.image_id %>
+</p>
+
+<p>
+  <strong>Created:</strong>
+  <%= @image_docker.created %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @image_docker.size %>
+</p>
+
+<%= link_to 'Edit', edit_image_docker_path(@image_docker) %> |
+<%= link_to 'Back', image_dockers_path %>

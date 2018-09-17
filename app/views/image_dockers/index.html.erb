@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Image Dockers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Repository</th>
+      <th>Tag</th>
+      <th>Image</th>
+      <th>Created</th>
+      <th>Size</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @image_dockers.each do |image_docker| %>
+      <tr>
+        <td><%= image_docker.repository %></td>
+        <td><%= image_docker.tag %></td>
+        <td><%= image_docker.image_id %></td>
+        <td><%= image_docker.created %></td>
+        <td><%= image_docker.size %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%#= link_to 'New Image Docker', new_server_image_docker_path %>

@@ -36,7 +36,7 @@
   <tbody>
     <% @servers.each do |server| %>
       <tr>
-        <td><%= link_to server.name, server_containers_path(server) %></td>
+        <td><%= link_to server.name, server_path(server) %></td>
         <td><%= server.ip %></td>
         <td><%= server.port %></td>
         <td><%= server.login %></td>

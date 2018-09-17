@@ -1,0 +1,42 @@
+<%= form_with(model: image_docker, local: true) do |form| %>
+  <% if image_docker.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(image_docker.errors.count, "error") %> prohibited this image_docker from being saved:</h2>
+
+      <ul>
+      <% image_docker.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :repository %>
+    <%= form.text_field :repository %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tag %>
+    <%= form.text_field :tag %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image_id %>
+    <%= form.text_field :image_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :created %>
+    <%= form.text_field :created %>
+  </div>
+
+  <div class="field">
+    <%= form.label :size %>
+    <%= form.text_field :size %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # get 'users', to: 'containers#index', as: 'users'
   resources :servers do
     resources :containers
+    resources :image_dockers
   end
   devise_for :users, skip: [:sessions]
   as :user do
