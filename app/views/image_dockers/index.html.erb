@@ -10,7 +10,7 @@
       <th>Image</th>
       <th>Created</th>
       <th>Size</th>
-      <th colspan="3"></th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
@@ -22,6 +22,7 @@
         <td><%= image_docker.image_id %></td>
         <td><%= image_docker.created %></td>
         <td><%= image_docker.size %></td>
+        <td><%= link_to 'Create Container', '#', class:"btn btn-primary"%></td>
       </tr>
     <% end %>
   </tbody>
