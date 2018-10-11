@@ -1,14 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+<h3><%= @server.name %></h3>
 <p>
-  <strong>Name:</strong>
-  <%= @server.name %>
-  <strong>Ip:</strong>
-  <%= @server.ip %>
+  <h4>Ip:<small><%= @server.ip %></small></h4>
 </p>
 
-<%= link_to 'Images', server_image_dockers_path(@server)%>
-<%= link_to 'Containers', server_containers_path(@server)%>
+<div class="col-sm-3">
+    <div class="card border-primary mb-3">
+      <div class="card-header text-center"><%= link_to "Images", server_image_dockers_path(@server) %></div>
+      <div class="card-body">
+        <h6 class="card-text">
+          <h6>Quantidade: <%= @server.image_dockers.count%> </h6>
+        </h6>
+      </div>
+    </div>
+    <div class="card border-primary mb-3">
+        <div class="card-header text-center"><%= link_to "Containers", server_containers_path(@server) %></div>
+        <div class="card-body">
+          <h6 class="card-text">
+            <h6>Quantidade: <%= @server.containers.count%> </h6>
+          </h6>
+        </div>
+      </div>
+    </div>
+  <%= link_to 'Edit', edit_server_path(@server), class:"btn btn-warning" %>
+  <%= link_to 'Back', servers_path, class:"btn btn-info" %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_server_path(@server) %> |
-<%= link_to 'Back', servers_path %>

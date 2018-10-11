@@ -5,7 +5,7 @@ class ImageDockersController < ApplicationController
   # GET /image_dockers.json
   def index
     start_images()
-    @image_dockers = ImageDocker.all
+    @image_dockers = @server.image_dockers
   end
 
   # GET /image_dockers/1
