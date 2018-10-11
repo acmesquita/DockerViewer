@@ -1,14 +1,8 @@
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
   <img src="<%= image_path('logo.png') %>" height="50" width="50" style="padding: 5px" />
   <%=link_to 'DockerViewer', servers_path, class:"navbar-brand col-sm-3 col-md-2 mr-0" %>  
-  <input disable class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-  <ul class="navbar-nav px-3">
-  <li class="nav-item text-nowrap">
-    <%= link_to 'Sign out', destroy_user_session_path,  method: :delete, class:"nav-link"%>
-  </li>
-  </ul>
-</nav>
-<nav class="navbar navbar sticky-top bg-dark flex-md-nowrap p-0 justify-content-center sidebar_backgraund">
+  <div class="w-100">
+  <nav class="navbar navbar sticky-top bg-dark flex-md-nowrap p-0 justify-content-center sidebar_backgraund">
   <ul class="nav ">
     <li class="nav-item">
     <div class="nav-link" >
@@ -35,4 +29,12 @@
     </li>
   </ul>
 </nav>
+  </div>
+  <ul class="navbar-nav px-3">
+  <li class="nav-item text-nowrap">
+    <%= link_to 'Sign out', destroy_user_session_path,  method: :delete, class:"nav-link"%>
+  </li>
+  </ul>
+</nav>
+
 <br/>

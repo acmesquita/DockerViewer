@@ -30,5 +30,7 @@
 /config/master.key
 
 docker_atual.txt
+images.txt
 
 docker_logs*
+
