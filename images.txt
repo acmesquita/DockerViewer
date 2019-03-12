@@ -1,26 +1,6 @@
-REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
-anacatharina/ubuntu-rails-sshd   latest              1653561dfadb        2 weeks ago         721MB
-anacatharina/ubuntu-sshd         16.04               1653561dfadb        2 weeks ago         721MB
-catharina/ubuntu-sshd            16.04               1653561dfadb        2 weeks ago         721MB
-<none>                           <none>              2e038a5d9aa1        2 weeks ago         721MB
-<none>                           <none>              ed986f66e2bc        2 weeks ago         244MB
-<none>                           <none>              21042149ba3c        2 weeks ago         210MB
-catharina/mycloud9               latest              2de5e80156b5        2 weeks ago         536MB
-ubuntu                           16.04               b9e15a5d1e1a        5 weeks ago         115MB
-dorowu/ubuntu-desktop-lxde-vnc   latest              f4118b17a460        6 weeks ago         1.17GB
-douglasq/nginx                   latest              cccb9deef098        2 months ago        110MB
-douglasq/alura-books             latest              208055e20041        2 months ago        695MB
-catharina/node                   latest              9ed53acce33f        2 months ago        677MB
-mongo                            latest              1e2b5a85319b        2 months ago        379MB
-ubuntu                           latest              735f80812f90        2 months ago        83.5MB
-nginx                            latest              c82521676580        2 months ago        109MB
-node                             latest              52fe93b8eea7        2 months ago        674MB
-dockerworkspace_app              latest              c364adf75037        2 months ago        79.2MB
-catharina/dockernode             latest              a97261f85a9b        2 months ago        72.9MB
-postgres                         latest              23e8b4b87843        2 months ago        236MB
-hello-world                      latest              2cb0d9787c4d        3 months ago        1.85kB
-node                             alpine              166e2eca249b        3 months ago        70.6MB
-alvarobacelar/tomcatjheat        jdk                 524ea3b1a8f2        4 months ago        1.04GB
-sapk/cloud9                      latest              71be4527832f        5 months ago        524MB
-douglasq/alura-books             cap05               ebff169e5013        14 months ago       691MB
-dockersamples/static-site        latest              f589ccde7957        2 years ago         191MB
+REPOSITORY           TAG                 IMAGE ID            CREATED             SIZE
+20190312125851_web   latest              8b4d10646de0        9 minutes ago       1.22GB
+20190312123953_web   latest              d17fd46aa4e3        25 minutes ago      1.22GB
+20190312125320_web   latest              d17fd46aa4e3        25 minutes ago      1.22GB
+postgres             latest              30bf4f039abe        7 days ago          312MB
+ruby                 2.6.0               ef8778f370d5        6 weeks ago         868MB
